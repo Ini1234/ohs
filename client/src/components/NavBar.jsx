@@ -41,7 +41,7 @@ const NavBar = () => {
       <ul
         className={`${
           toggle ? '' : 'hidden'
-        } sm:hidden pb-12 absolute z-[-1] left-0 w-full pl-9 transition-all duration-500 ease-in`}
+        } sm:hidden pb-12 absolute z-[-1] left-0 w-full pl-9 transition-all duration-500 ease-in bg-white`}
       >
         {navLinks.map((nav, index) => (
           <li

@@ -10,6 +10,7 @@ module.exports = {
         greenPalette: '#829483',
         dimWhite: 'rgba(255, 255, 255, 0.7)',
         dimBlue: 'rgba(9, 151, 124, 0.1)',
+        secondaryTextColor: '#616161',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
@@ -48,6 +49,10 @@ module.exports = {
       '50%': '50%',
       16: '4rem',
       lHeroImg: '1200px',
+    },
+    lineHeight: {
+      'extra-loose': '134%',
+      12: '3rem',
     },
   },
   plugins: [],
