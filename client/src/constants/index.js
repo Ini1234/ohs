@@ -20,23 +20,21 @@ export const heroSection = [
 export const features = [
   {
     id: 'feature-1',
-    title: 'Rewards',
+    title: 'Have 24/7 Access To Your Records',
     content:
-      'The best credit cards offer some tantalizing combinations of promotions and prizes',
+      'Lorem ipsum lgdkjg dfjgndfg i lfdg Lorem ipsum lgdkjg dfjgndfg i lfdg Lorem ipsum lgdkjg dfjgndfg i lfdg.',
   },
   {
     id: 'feature-2',
-    // icon: shield,
-    title: '100% Secured',
+    title: 'Secure Platform for Record Storing',
     content:
-      'We take proactive steps make sure your information and transactions are secure.',
+      'HIPPA compliance by using security software that ensures patient information is shared safely.',
   },
   {
     id: 'feature-3',
-    // icon: send,
-    title: 'Balance Transfer',
+    title: 'Cross-Provider Collaboration',
     content:
-      'A balance transfer credit card can save you a lot of money in interest charges.',
+      'Send results from one service provider to another allowing seamless collaboration between your services.',
   },
 ];
 

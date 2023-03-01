@@ -6,6 +6,7 @@ import ohslogo from './ohslogo.png';
 import googleIcon from './googleIcon.svg';
 import or from './or.png';
 import circularframe from './circularframe.png';
+import mobilephone1 from './mobilephone1.png';
 
 export {
   logo,
@@ -16,4 +17,5 @@ export {
   googleIcon,
   or,
   circularframe,
+  mobilephone1,
 };
