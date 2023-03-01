@@ -24,6 +24,9 @@ const App = () => {
       <div className='mt-15 md:mt-28 py-4'>
         <About />
       </div>
+      <div className='mt-15 md:mt-28 py-4'>
+        <Belt />
+      </div>
     </div>
   );
 };
