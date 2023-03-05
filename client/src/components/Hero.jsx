@@ -3,7 +3,7 @@ import { circularframe } from '../assets';
 
 const Hero = () => {
   return (
-    <section id='home' className={`flex w-full`}>
+    <section className={`flex w-full`}>
       <div className='w-full flex flex-col-reverse sm:flex-row items-center justify-center'>
         <div>
           <LoginForm />

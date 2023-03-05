@@ -7,11 +7,11 @@ import Button from './Button';
 const NavBar = () => {
   const [toggle, setToggle] = useState(false);
   return (
-    <nav className='shadow-md w-full fixed top-0 left-0'>
+    <nav className='shadow-md w-full relative'>
       <div className='sm:flex items-center justify-between bg-primary py-4 sm:pdx-10 px-7'>
         <div className='font-normal text-xl cursor-pointer flex items-center font-[Rufina]'>
           <img src={logo} alt='ohs' className='w-[40px] h-[36px]' />
-          OneHealthSpace
+          <a href={`#home`}>OneHealthSpace</a>
         </div>
         <ul
           className={`hidden sm:flex sm:items-center sm:pb-0 pb-12 absolute sm:static sm:z-auto z-[-1] left-0 w-full sm:w-auto sm:pl-0 pl-9 transition-all duration-500 ease-in`}
@@ -41,7 +41,7 @@ const NavBar = () => {
       <ul
         className={`${
           toggle ? '' : 'hidden'
-        } sm:hidden pb-12 absolute z-[-1] left-0 w-full pl-9 transition-all duration-500 ease-in bg-white`}
+        } sm:hidden pb-12 absolute left-0 w-full pl-9 transition-all duration-500 ease-in bg-white`}
       >
         {navLinks.map((nav, index) => (
           <li

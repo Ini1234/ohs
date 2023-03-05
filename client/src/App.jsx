@@ -15,10 +15,10 @@ import {
 const App = () => {
   return (
     <div className='bg-primary w-full h-screen'>
-      <div className='mb-12'>
+      <div id='home' className='mb-12'>
         <NavBar />
       </div>
-      <div className='mt-28 py-4'>
+      <div className='mt-15 py-4'>
         <Hero />
       </div>
       <div className='mt-15 md:mt-28 py-4'>
@@ -26,6 +26,9 @@ const App = () => {
       </div>
       <div className='mt-15 md:mt-28 py-4'>
         <Belt />
+      </div>
+      <div className='mt-8 py-4'>
+        <Contact />
       </div>
     </div>
   );
