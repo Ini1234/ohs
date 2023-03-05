@@ -8,7 +8,7 @@ const Hero = () => {
         <div>
           <LoginForm />
         </div>
-        <div className='flex w-full w-full max-w-[420px] max-h-[420px] lg:max-w-[450px] lg:max-h-[450px]'>
+        <div className='flex w-full max-w-[420px] max-h-[420px] lg:max-w-[450px] lg:max-h-[450px]'>
           <img
             src={circularframe}
             alt='space'

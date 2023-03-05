@@ -3,8 +3,8 @@ import { GetStarted, LearnMore } from '../components';
 
 const GreenPalette = () => {
   return (
-    <div className='w-full bg-greenPalette rounded-palette flex flex-col justify-center items-center  w-full h-[200px] bg-opacity-80 px-10 py-12'>
-      <h1 className='font-rufina leading-3 text-[20px] text-white text-[20px] ss:leading-[43px] mb-2'>
+    <div className='w-full bg-greenPalette rounded-palette flex flex-col justify-center items-center h-[200px] bg-opacity-80 px-10 py-12'>
+      <h1 className='font-rufina leading-3 text-[20px] text-white ss:leading-[43px] mb-2'>
         Create Your <br className='sm:block hidden' /> Personal Health Space
       </h1>
       <p className='flex-1 font-inter font-normal text-primary text-[12px] mt-0.5 mb-2'>
