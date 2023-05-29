@@ -1,15 +1,20 @@
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import { close, logo, menu } from '../assets';
 import { navLinks } from '../constants';
 import Button from './Button';
 
 const NavBar = () => {
   const [toggle, setToggle] = useState(false);
+  const navigate = useNavigate();
+  const goToLogin = (event) => {
+    event.preventDefault();
+    navigate('/login');
+  };
   return (
     <nav className='shadow-md w-full relative'>
       <div className='sm:flex items-center justify-between bg-primary py-4 sm:pdx-10 px-7'>
-        <div className='font-normal text-xl cursor-pointer flex items-center font-[Rufina]'>
+        <div className='font-normal text-base ss:text-xl cursor-pointer flex items-center font-[Rufina]'>
           <img src={logo} alt='ohs' className='w-[40px] h-[36px]' />
           <a href={`#home`}>OneHealthSpace</a>
         </div>
@@ -27,14 +32,20 @@ const NavBar = () => {
               <a href={`#${nav.id}`}>{nav.title}</a>
             </li>
           ))}
-          <Button>My Space</Button>
+          <button
+            className='active:scale-[.95] active:duration-75 transition-all bg-greenPalette text-white font-[Inter] font-normal text-[13px] py-2 px-4 rounded-full sm:ml-8 hover:scale-[1.01] duration-500'
+            onClick={goToLogin}
+          >
+            Myspace
+          </button>
+          {/* <Button onClick={goToLogin}>My Space</Button> */}
         </ul>
       </div>
       <div className='absolute right-8 top-6 cursor-pointer sm:hidden'>
         <img
           src={toggle ? close : menu}
           alt='menu'
-          className='w-[22px] h-[22-px] object-contain'
+          className='w-[15px] h-[15px] ss:w-[22px] ss:h-[22-px] object-contain'
           onClick={() => setToggle((prev) => !prev)}
         />
       </div>
@@ -46,12 +57,18 @@ const NavBar = () => {
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
-            className={`font-[Rufina] font-normal cursor-pointer text-[16px] my-7 sm:hidden`}
+            className={`font-[Rufina] font-normal cursor-pointer text-[14px] ss:text-[16px] my-7 sm:hidden`}
           >
             <a href={`#${nav.id}`}>{nav.title}</a>
           </li>
         ))}
-        <Button>My Space</Button>
+        <button
+          className='active:scale-[.95] active:duration-75 transition-all bg-greenPalette text-white font-[Inter] font-normal text-[13px] py-2 px-4 rounded-full sm:ml-8 hover:scale-[1.01] duration-500'
+          onClick={goToLogin}
+        >
+          Myspace
+        </button>
+        {/* <Button onClick={goToLogin}>My Space</Button> */}
       </ul>
     </nav>
   );

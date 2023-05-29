@@ -9,8 +9,13 @@ import Contact from './Contact';
 import Features from './Features';
 import GreenPalette from './GreenPalette';
 import LearnMore from './LearnMore';
+import SignUp from './SignUp';
+import LoginPage from './LoginPage';
+import Body from './Body';
+import MySpace from './MySpace';
 
 export {
+  Body,
   NavBar,
   About,
   Belt,
@@ -22,4 +27,7 @@ export {
   Features,
   GreenPalette,
   LearnMore,
+  SignUp,
+  LoginPage,
+  MySpace,
 };

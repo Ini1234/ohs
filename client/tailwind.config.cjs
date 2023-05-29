@@ -9,6 +9,7 @@ module.exports = {
         secondary: '#FCFDF4',
         greenPalette: '#829483',
         dimWhite: 'rgba(255, 255, 255, 0.7)',
+        alittleDim: 'rgba(243, 242, 239, 0.28)',
         dimBlue: 'rgba(9, 151, 124, 0.1)',
         secondaryTextColor: '#616161',
       },
