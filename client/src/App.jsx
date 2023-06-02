@@ -25,10 +25,14 @@ const App = () => {
       </Routes>
       <Routes>
         <Route path='/login' element={<LoginPage />} />
-      </Routes>
+      </Routes> 
       <Routes>
         <Route path='/myspace' element={<MySpace />} />
       </Routes>
+      <Routes>
+        <Route path='/signup' element={<SignUp />} />
+      </Routes>
+      
     </BrowserRouter>
   );
 };
