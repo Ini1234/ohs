@@ -5,6 +5,7 @@ import authRoute from './routes/auth.js';
 // import usersRoute from './routes/users.js';
 import cors from 'cors';
 import pool from './database.js';
+import path from 'path';
 
 dotenv.config();
 
@@ -33,4 +34,20 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => {
   console.log(`Server running on Port ${PORT}`);
+});
+
+const _dirname = path.dirname('');
+const buildPath = path.join(_dirname, '../client/dist');
+
+app.use(express.static(buildPath));
+
+app.get('/*', function (req, res) {
+  res.sendFile(
+    path.join(__dirname, '../client/dist/index.html'),
+    function (err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    }
+  );
 });
