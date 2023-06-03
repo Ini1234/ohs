@@ -16,6 +16,7 @@ const SignUp = () => {
 const goToLogin = (event) => {
   event.preventDefault();
   navigate('/login');
+  
 };
   
   const handleRegister = (event) => {
