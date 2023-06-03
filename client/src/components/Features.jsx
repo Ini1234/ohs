@@ -1,6 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Features = () => {
+  const navigate = useNavigate();
+
+  // Handles Navigation to /signp
+  const goToSignUp = (event) => {
+    event.preventDefault();
+    navigate('/signUp');
+  };
+  
   return (
     <div className='justify-center mt-5 px-4 xs:px-10 sm:px-0'>
       <h2 className='font-[Inter] font-bold text-sm sm:text-lg mb-1'>
@@ -26,7 +35,9 @@ const Features = () => {
         <br className='hidden sm:block' /> allowing seamless collaboration
         between your services.
       </p>
-      <button className='w-full md:w-auto active:scale-[.95] active:duration-75 transition-all bg-greenPalette text-white font-[Inter] font-normal text-[13px] py-2 px-6 rounded-full hover:scale-[1.01] duration-500 text-xs sm:text-base'>
+      <button className='w-full md:w-auto active:scale-[.95] active:duration-75 transition-all bg-greenPalette text-white font-[Inter] font-normal text-[13px] py-2 px-6 rounded-full hover:scale-[1.01] duration-500 text-xs sm:text-base '
+      onClick= {goToSignUp}
+      >
         Get Started
       </button>
     </div>
