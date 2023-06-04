@@ -6,6 +6,7 @@ import authRoute from './routes/auth.js';
 import cors from 'cors';
 import pool from './database.js';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
@@ -36,8 +37,9 @@ app.listen(PORT, () => {
   console.log(`Server running on Port ${PORT}`);
 });
 
-const _dirname = path.dirname('');
-const buildPath = path.join(_dirname, '../client/dist');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const buildPath = path.join(__dirname, '../client/dist');
 
 app.use(express.static(buildPath));
 
