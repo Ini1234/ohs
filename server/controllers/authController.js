@@ -27,8 +27,6 @@ export const register = async (req, res, next) => {
         console.log('Error: ', err);
         //return next(createError(500, 'Unable to create User'));
       });
-
-    console.log(req.body);
     res.send('Response recieves' + req.body);
   } catch (err) {
     next(err);
@@ -52,8 +50,6 @@ export const login = async (req, res, next) => {
             req.body.password,
             user.password
           );
-
-          console.log(isCorrectPassword);
           if (!isCorrectPassword) {
             return next(createError(400, 'Wrong Username or Password'));
           } else {
