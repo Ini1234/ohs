@@ -10,15 +10,12 @@ const SignUp = () => {
   const [last_name, setLastName] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
-
-// Handles Navigation to /login
-const goToLogin = (event) => {
-  event.preventDefault();
-  navigate('/login');
-  
-};
-  
+  // Handles Navigation to /login
+  const goToLogin = (event) => {
+    event.preventDefault();
+    navigate('/login');
+    
+  };
   const handleRegister = (event) => {
     event.preventDefault();
     axios
@@ -108,6 +105,5 @@ const goToLogin = (event) => {
     </div>
   );
 };
-
 export default SignUp;
 
