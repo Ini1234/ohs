@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { googleIcon, or } from '../assets';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -8,6 +9,13 @@ const SignUp = () => {
   const [first_name, setFirstName] = useState('');
   const [last_name, setLastName] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  // Handles Navigation to /login
+  const goToLogin = (event) => {
+    event.preventDefault();
+    navigate('/login');
+    
+  };
   const handleRegister = (event) => {
     event.preventDefault();
     axios
@@ -87,7 +95,9 @@ const SignUp = () => {
             />
             Continue with Google
           </button>
-          <button className='text-[0.5rem] md:text-[0.8rem] font-[Inter] font-medium active:scale-[.95] active:duration-75 transition-all hover:scale-[1.01]'>
+          <button className='text-[0.5rem] md:text-[0.8rem] font-[Inter] font-medium active:scale-[.95] active:duration-75 transition-all hover:scale-[1.01]'
+          onClick={ goToLogin}
+          >
             Already on OneHealthSpace? Sign in
           </button>
         </div>
@@ -97,3 +107,4 @@ const SignUp = () => {
 };
 
 export default SignUp;
+

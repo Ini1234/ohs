@@ -4,6 +4,7 @@ import axios from 'axios';
 import { AuthContext } from '../context/authContext.jsx';
 import { useNavigate } from 'react-router-dom';
 
+
 const LoginPage = () => {
   const [credentials, setCredentials] = useState({
     email: undefined,
@@ -19,6 +20,10 @@ const LoginPage = () => {
       ...prev,
       [event.target.id]: event.target.value,
     }));
+  };
+  const goToSignUp = (event) => {
+    event.preventDefault();
+    navigate('/signup');
   };
 
   const handleLogin = async (event) => {
@@ -39,7 +44,7 @@ const LoginPage = () => {
   return (
     <div className='flex flex-col p-8 justify-center items-center'>
       <h1 className='text-center  text-base md:text-3xl font-[Rufina] font-light mb-2 md:mb-6 leading-extra-loose'>
-        Sign up to create your
+        Sign in to your
         <br />
         <span className='md:mt-3'> personal health space</span>
       </h1>
@@ -90,8 +95,10 @@ const LoginPage = () => {
             />
             Continue with Google
           </button>
-          <button className='text-[0.5rem] md:text-[0.8rem] font-[Inter] font-medium active:scale-[.95] active:duration-75 transition-all hover:scale-[1.01]'>
-            Already on OneHealthSpace? Sign in
+          <button className='text-[0.5rem] md:text-[0.8rem] font-[Inter] font-medium active:scale-[.95] active:duration-75 transition-all hover:scale-[1.01]'
+          onClick = {goToSignUp}
+          >
+            Not on OneHealthSpace? Join now
           </button>
         </div>
       </div>

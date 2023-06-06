@@ -16,6 +16,12 @@ const LoginForm = () => {
 
   const navigate = useNavigate();
 
+  // Handles Navigation to /signup
+  const goToSignUp = (event) => {
+    event.preventDefault();
+    navigate('/signup');
+  };
+
   // Handle Login. TODO. Migrate this to the loginPage
   const handleChange = (event) => {
     setCredentials((prev) => ({
@@ -89,7 +95,9 @@ const LoginForm = () => {
             <img src={googleIcon} alt='ohs' className='w-[15px] h-[15px]' />
             Sign in with Google
           </button>
-          <button className='active:scale-[.95] active:duration-75 transition-all w-full border border-1 border-black border-solid text-secondaryTextColor font-[Poppins] font-normal text-[13px] py-2 px-4 rounded-full hover:scale-[1.01] duration-500'>
+          <button className='active:scale-[.95] active:duration-75 transition-all w-full border border-1 border-black border-solid text-secondaryTextColor font-[Poppins] font-normal text-[13px] py-2 px-4 rounded-full hover:scale-[1.01] duration-500'
+          onClick = {goToSignUp}
+          >
             New to OneHealthSpace? Join now
           </button>
         </div>
