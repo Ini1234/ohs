@@ -3,35 +3,37 @@ import jwt from 'jsonwebtoken';
 // import User from '../models/User.js';
 import { createError } from '../utils/error.js';
 import pool from './../database.js';
+import AppError from '../utils/appError.js';
+import { catchAsync } from '../utils/catchAsync.js';
 
 // Register New User
-export const register = async (req, res, next) => {
-  try {
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(req.body.password, salt);
+export const register = catchAsync(async (req, res, next) => {
+  const salt = bcrypt.genSaltSync(10);
+  const hash = bcrypt.hashSync(req.body.password, salt);
 
-    const username = req.body.username ? req.body.username : 'ini';
-    const email = req.body.email;
-    const first_name = req.body.first_name;
-    const last_name = req.body.last_name;
+  const username = req.body.username;
+  const email = req.body.email;
+  const first_name = req.body.first_name;
+  const last_name = req.body.last_name;
 
-    const insertSTMT = `INSERT INTO users (username, password, email, first_name,last_name) VALUES ('${username}', '${hash}', '${email}', '${first_name}', '${last_name}');`;
+  const insertSTMT = `INSERT INTO users (username, password, email, first_name,last_name) VALUES ('${username}', '${hash}', '${email}', '${first_name}', '${last_name}');`;
 
-    pool
-      .query(insertSTMT)
-      .then((response) => {
-        console.log('Success');
-        console.log(response);
-      })
-      .catch((err) => {
-        console.log('Error: ', err);
-        //return next(createError(500, 'Unable to create User'));
-      });
-    res.send('Response recieves' + req.body);
-  } catch (err) {
-    next(err);
-  }
-};
+  pool
+    .query(insertSTMT)
+    .then((response) => {
+      console.log('Success');
+      const token = jwt.sign({ id: user.user_id }, process.env.JWT_SECRET);
+      res
+        .cookie('access_token', token, {
+          httpOnly: true,
+        })
+        .status(200)
+        .json({ username, email, first_name, last_name });
+    })
+    .catch((err) => {
+      next(new AppError(`Unable to add user! ${err}`, 500));
+    });
+});
 
 // login user
 export const login = async (req, res, next) => {
