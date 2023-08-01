@@ -1,40 +1,29 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import styles from './style';
-import {
-  NavBar,
-  About,
-  Belt,
-  CTA,
-  Footer,
-  GetStarted,
-  Hero,
-  Contact,
-  Features,
-  GreenPalette,
-  SignUp,
-  LoginPage,
-  Body,
-  MySpace,
-} from './components';
+import HomePage from './pages/HomePage';
+import MySpacePage from './pages/MySpacePage';
+import SignUpPage from './pages/SignUpPage';
+import LoginPage from './pages/LoginPage';
+import RootLayout from './pages/RootLayout';
+import ErrorPage from './pages/ErrorPage';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      { path: '', element: <HomePage /> },
+      { path: 'login', element: <LoginPage /> },
+      { path: 'signup', element: <SignUpPage /> },
+    ],
+  },
+
+  { path: '/myspace', element: <MySpacePage /> },
+]);
 
 const App = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Body />} />
-      </Routes>
-      <Routes>
-        <Route path='/login' element={<LoginPage />} />
-      </Routes> 
-      <Routes>
-        <Route path='/myspace' element={<MySpace />} />
-      </Routes>
-      <Routes>
-        <Route path='/signup' element={<SignUp />} />
-      </Routes>
-      
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

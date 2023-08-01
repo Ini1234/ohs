@@ -7,6 +7,8 @@ import pool from './database.js';
 import path from 'path';
 import helmet from 'helmet';
 import { fileURLToPath } from 'url';
+import AppError from './utils/appError.js';
+import { globalErrorHandler } from './controllers/errorController.js';
 
 dotenv.config();
 
@@ -14,7 +16,7 @@ const app = express();
 
 // Global Middlewares
 app.use(cors());
-app.options('*', cors());
+// app.options('*', cors());
 // Access-Control-Allow-Origin *
 
 // Set Security Https Headers
@@ -45,19 +47,17 @@ const PORT = process.env.PORT || 4000;
 // Middlewares
 app.use(cookieParser());
 app.use(express.json());
+
+// Routes
 app.use('/api/v1/auth', authRoute);
 
-// For Handling errors
-app.use((err, req, res, next) => {
-  const errorStatus = err.status || 500;
-  const errorMessage = err.message || 'An error has occurred';
-  return res.status(errorStatus).json({
-    success: false,
-    status: errorStatus,
-    message: errorMessage,
-    stack: err.stack,
-  });
+//Unhandled Routes
+app.all('*', (req, res, next) => {
+  next(new AppError(`${req.originalUrl} can't be found on this server!`, 404));
 });
+
+// For Handling errors
+app.use(globalErrorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server running on Port ${PORT}`);

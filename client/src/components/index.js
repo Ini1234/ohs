@@ -10,7 +10,7 @@ import Features from './Features';
 import GreenPalette from './GreenPalette';
 import LearnMore from './LearnMore';
 import SignUp from './SignUp';
-import LoginPage from './LoginPage';
+import Login from './Login';
 import Body from './Body';
 import MySpace from './MySpace';
 
@@ -28,6 +28,6 @@ export {
   GreenPalette,
   LearnMore,
   SignUp,
-  LoginPage,
+  Login,
   MySpace,
 };

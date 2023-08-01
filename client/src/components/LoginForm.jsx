@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { googleIcon, or } from '../assets';
 import axios from 'axios';
 import { AuthContext } from '../context/authContext.jsx';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
   const [show, setShow] = useState(false);
@@ -16,13 +16,7 @@ const LoginForm = () => {
 
   const navigate = useNavigate();
 
-  // Handles Navigation to /signup
-  const goToSignUp = (event) => {
-    event.preventDefault();
-    navigate('/signup');
-  };
-
-  // Handle Login. TODO. Migrate this to the loginPage
+  // Handle Login. TODO. Migrate this to the login
   const handleChange = (event) => {
     setCredentials((prev) => ({
       ...prev,
@@ -34,10 +28,7 @@ const LoginForm = () => {
     event.preventDefault();
     dispatch({ type: 'LOGIN_START' });
     try {
-      const res = await axios.post(
-        'http://localhost:4000/api/v1/auth/login',
-        credentials
-      );
+      const res = await axios.post('/api/v1/auth/login', credentials);
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
       navigate('/myspace');
     } catch (err) {
@@ -95,11 +86,11 @@ const LoginForm = () => {
             <img src={googleIcon} alt='ohs' className='w-[15px] h-[15px]' />
             Sign in with Google
           </button>
-          <button className='active:scale-[.95] active:duration-75 transition-all w-full border border-1 border-black border-solid text-secondaryTextColor font-[Poppins] font-normal text-[13px] py-2 px-4 rounded-full hover:scale-[1.01] duration-500'
-          onClick = {goToSignUp}
-          >
-            New to OneHealthSpace? Join now
-          </button>
+          <Link to='/signup'>
+            <button className='active:scale-[.95] active:duration-75 transition-all w-full border border-1 border-black border-solid text-secondaryTextColor font-[Poppins] font-normal text-[13px] py-2 px-4 rounded-full hover:scale-[1.01] duration-500'>
+              New to OneHealthSpace? Join now
+            </button>
+          </Link>
         </div>
       </div>
     </div>
