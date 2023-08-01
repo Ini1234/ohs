@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from './NavBar';
 import About from './About';
 import Belt from './Belt';
 import Hero from './Hero';
@@ -8,9 +7,6 @@ import Contact from './Contact';
 const Body = () => {
   return (
     <div className='bg-primary w-full h-screen'>
-      <div id='home' className='mb-12'>
-        <NavBar />
-      </div>
       <div className='mt-15 py-4'>
         <Hero />
       </div>

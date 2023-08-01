@@ -4,12 +4,10 @@ import axios from 'axios';
 import { AuthContext } from '../context/authContext.jsx';
 import { Link, useNavigate } from 'react-router-dom';
 
-const SignUp = () => {
+const Login = () => {
   const [credentials, setCredentials] = useState({
     email: undefined,
     password: undefined,
-    firstname: undefined,
-    lastname: undefined,
   });
   const { user, loading, error, dispatch } = useContext(AuthContext);
 
@@ -38,26 +36,10 @@ const SignUp = () => {
   return (
     <div className='flex flex-col p-8 justify-center items-center'>
       <h1 className='text-center  text-base md:text-xl font-[Inter] font-semibold mb-2 md:mb-6 tracking-normal'>
-        Sign Up to OneHealthSpace
+        Sign in to your account
       </h1>
       <div className=' bg-alittleDim w-[200px] md:w-[550px] p-2 md:p-8 rounded-md'>
         <div className='bg-white p-10 rounded-md'>
-          <div className='flex flex-col justify-between gap-y-2 mt-2 md:mt-5'>
-            <p>First Name</p>
-            <input
-              className='w-full border border-1 border-[#D1D5DB] border-solid shadow-lg p-2 rounded font-[Inter] text-[0.5rem] md:text-[0.8rem]'
-              id='firstname'
-              onChange={handleChange}
-            />
-          </div>
-          <div className='flex flex-col justify-between gap-y-2 mt-2 md:mt-5'>
-            <p>Last Name</p>
-            <input
-              className='w-full border border-1 border-[#D1D5DB] border-solid shadow-lg p-2 rounded font-[Inter] text-[0.5rem] md:text-[0.8rem]'
-              id='lastname'
-              onChange={handleChange}
-            />
-          </div>
           <div className='flex flex-col justify-between gap-y-2 mt-2 md:mt-5'>
             <p>Email Address</p>
             <input
@@ -75,13 +57,26 @@ const SignUp = () => {
               onChange={handleChange}
             />
           </div>
-
+          <div className='flex justify-between gap-y-2 mt-2 md:mt-5'>
+            <div className='flex gap-x-2'>
+              <input
+                className=''
+                id='rememberMe'
+                type='checkbox'
+                onChange={handleChange}
+              />
+              <p className='font-light'>Remember Me</p>
+            </div>
+            <div>
+              <p className='text-greenPalette'>Forgot Password?</p>
+            </div>
+          </div>
           <div>
             <button
               className='active:scale-[.95] active:duration-75 transition-all mt-6 w-full bg-greenPalette text-white font-[Poppins] font-normal text-[0.5rem] md:text-[0.8rem] py-2 px-4 rounded hover:scale-[1.01] duration-500'
               onClick={handleLogin}
             >
-              Sign Up
+              Sign in
             </button>
             {error && <span>{error.message}</span>}
           </div>
@@ -95,12 +90,12 @@ const SignUp = () => {
                 alt='ohs'
                 className='w-[10px] h-10[px]md:w-[15px] md:h-[15px]'
               />
-              Sign Up with Google
+              Sign in with Google
             </button>
-            <Link to='/login' className='flex justify-center content-center'>
+            <Link to='/signup' className='flex justify-center content-center'>
               <button className='text-[0.5rem] md:text-[0.8rem] font-[Inter] font-medium active:scale-[.95] active:duration-75 transition-all hover:scale-[1.01]'>
-                Have an account?{' '}
-                <span className='text-greenPalette'>Sign in here</span>
+                Not a member?{' '}
+                <span className='text-greenPalette'>Sign up here</span>
               </button>
             </Link>
           </div>
@@ -110,4 +105,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login;

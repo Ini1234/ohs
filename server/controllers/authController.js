@@ -22,7 +22,9 @@ export const register = catchAsync(async (req, res, next) => {
     .query(insertSTMT)
     .then((response) => {
       console.log('Success');
-      const token = jwt.sign({ id: user.user_id }, process.env.JWT_SECRET);
+      const token = jwt.sign({ id: user.user_id }, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRES_IN,
+      });
       res
         .cookie('access_token', token, {
           httpOnly: true,
@@ -57,7 +59,10 @@ export const login = async (req, res, next) => {
           } else {
             const token = jwt.sign(
               { id: user.user_id },
-              process.env.JWT_SECRET
+              process.env.JWT_SECRET,
+              {
+                expiresIn: process.env.JWT_EXPIRES_IN,
+              }
             );
             const { password, ...otherDetails } = user;
 

@@ -42,7 +42,7 @@ app.get('/*', function (req, res) {
 
 // Body Parser
 app.use(express.json());
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 4000;
 
 // Middlewares
 app.use(cookieParser());
