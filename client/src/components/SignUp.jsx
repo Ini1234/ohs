@@ -27,7 +27,7 @@ const SignUp = () => {
     event.preventDefault();
     dispatch({ type: 'LOGIN_START' });
     try {
-      const res = await axios.post('/api/v1/auth/login', credentials);
+      const res = await axios.post('/api/v1/auth/register', credentials);
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
       navigate('/myspace');
     } catch (err) {
