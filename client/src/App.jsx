@@ -22,8 +22,4 @@ const router = createBrowserRouter([
   { path: '/myspace', element: <MySpacePage /> },
 ]);
 
-const App = () => {
-  return <RouterProvider router={router} />;
-};
-
 export default App;
