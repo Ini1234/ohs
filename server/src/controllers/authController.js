@@ -2,12 +2,13 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 // import User from '../models/User.js';
 import { createError } from '../utils/error.js';
-import pool from './../database.js';
+import pool from '../../database.js';
 import AppError from '../utils/appError.js';
 import { catchAsync } from '../utils/catchAsync.js';
+import { response } from 'express';
 
 // Register New User
-export const register = catchAsync(async (req, res, next) => {
+export const register = async (req, res, next) => {
   const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(req.body.password, salt);
 
@@ -16,26 +17,39 @@ export const register = catchAsync(async (req, res, next) => {
   const first_name = req.body.first_name;
   const last_name = req.body.last_name;
 
-  const insertSTMT = `INSERT INTO users (username, password, email, first_name,last_name) VALUES ('${username}', '${hash}', '${email}', '${first_name}', '${last_name}');`;
-
-  pool
-    .query(insertSTMT)
-    .then((response) => {
-      console.log('Success');
-      const token = jwt.sign({ id: user.user_id }, process.env.JWT_SECRET, {
-        expiresIn: process.env.JWT_EXPIRES_IN,
-      });
-      res
-        .cookie('access_token', token, {
-          httpOnly: true,
-        })
-        .status(200)
-        .json({ username, email, first_name, last_name });
-    })
-    .catch((err) => {
-      next(new AppError(`Unable to add user! ${err}`, 500));
+  try {
+    // Search if User exist first
+    const searchUser = `SELECT * FROM users WHERE email = '${email}'`;
+    pool.query(searchUser).then(async (response) => {
+      if (response.rowCount > 1)
+        return next(createError(401, 'User Already exists'));
     });
-});
+
+    // add user
+    const insertSTMT = `INSERT INTO users (username, email, password, first_name,last_name) VALUES ('${username}','${email}', '${hash}',  '${first_name}', '${last_name}') RETURNING * ;`;
+    pool
+      .query(insertSTMT)
+      .then(async (response) => {
+        console.log('SUCCESS!!');
+        const user = response.rows[0];
+        const token = jwt.sign({ id: user.user_id }, process.env.JWT_SECRET, {
+          expiresIn: process.env.JWT_EXPIRES_IN,
+        });
+        const { password, ...otherDetails } = user;
+        res
+          .cookie('access_token', token, {
+            httpOnly: true,
+          })
+          .status(200)
+          .json({ ...otherDetails });
+      })
+      .catch((err) => {
+        next(new AppError(`Unable to add user! ${err}`, 500));
+      });
+  } catch (err) {
+    next(err);
+  }
+};
 
 // login user
 export const login = async (req, res, next) => {

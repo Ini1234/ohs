@@ -9,6 +9,7 @@ import helmet from 'helmet';
 import { fileURLToPath } from 'url';
 import AppError from './src/utils/appError.js';
 import { globalErrorHandler } from './src/controllers/errorController.js';
+import constants from './constants';
 
 dotenv.config();
 
@@ -42,7 +43,6 @@ app.get('/*', function (req, res) {
 
 // Body Parser
 app.use(express.json());
-const PORT = process.env.PORT || 4000;
 
 // Middlewares
 app.use(cookieParser());
