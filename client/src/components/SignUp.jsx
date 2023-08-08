@@ -23,7 +23,7 @@ const SignUp = () => {
     }));
   };
 
-  const handleLogin = async (event) => {
+  const handleSignin = async (event) => {
     event.preventDefault();
     dispatch({ type: 'LOGIN_START' });
     try {
@@ -42,6 +42,14 @@ const SignUp = () => {
       </h1>
       <div className=' bg-alittleDim w-[200px] md:w-[550px] p-2 md:p-8 rounded-md'>
         <div className='bg-white p-10 rounded-md'>
+          <div className='flex flex-col justify-between gap-y-2 mt-2 md:mt-5'>
+            <p>Username</p>
+            <input
+              className='w-full border border-1 border-[#D1D5DB] border-solid shadow-lg p-2 rounded font-[Inter] text-[0.5rem] md:text-[0.8rem]'
+              id='username'
+              onChange={handleChange}
+            />
+          </div>
           <div className='flex flex-col justify-between gap-y-2 mt-2 md:mt-5'>
             <p>First Name</p>
             <input
@@ -79,7 +87,7 @@ const SignUp = () => {
           <div>
             <button
               className='active:scale-[.95] active:duration-75 transition-all mt-6 w-full bg-greenPalette text-white font-[Poppins] font-normal text-[0.5rem] md:text-[0.8rem] py-2 px-4 rounded hover:scale-[1.01] duration-500'
-              onClick={handleLogin}
+              onClick={handleSignin}
             >
               Sign Up
             </button>
