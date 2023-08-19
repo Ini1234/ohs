@@ -13,6 +13,7 @@ import SignUp from './SignUp';
 import Login from './Login';
 import Body from './Body';
 import MySpace from './MySpace';
+import PageNotFound from './PageNotFound';
 
 export {
   Body,
@@ -30,4 +31,5 @@ export {
   SignUp,
   Login,
   MySpace,
+  PageNotFound,
 };
