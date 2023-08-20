@@ -40,7 +40,7 @@ const SignUp = () => {
       <h1 className='text-center  text-base md:text-xl font-[Inter] font-semibold mb-2 md:mb-6 tracking-normal'>
         Sign Up to OneHealthSpace
       </h1>
-      <div className=' bg-alittleDim w-[200px] md:w-[550px] p-2 md:p-8 rounded-md'>
+      <div className=' bg-alittleDim w-[200px] sm:w-[550px] p-2 sm:p-8 rounded-md'>
         <div className='bg-white p-10 rounded-md'>
           <div className='flex flex-col justify-between gap-y-2 mt-2 md:mt-5'>
             <p>Username</p>

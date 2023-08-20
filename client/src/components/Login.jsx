@@ -38,7 +38,7 @@ const Login = () => {
       <h1 className='text-center  text-base md:text-xl font-[Inter] font-semibold mb-2 md:mb-6 tracking-normal'>
         Sign in to your account
       </h1>
-      <div className=' bg-alittleDim w-[200px] md:w-[550px] p-2 md:p-8 rounded-md'>
+      <div className=' bg-alittleDim w-[200px] sm:w-[550px] p-2 sm:p-8 rounded-md'>
         <div className='bg-white p-10 rounded-md'>
           <div className='flex flex-col justify-between gap-y-2 mt-2 md:mt-5'>
             <p>Email Address</p>
@@ -57,7 +57,7 @@ const Login = () => {
               onChange={handleChange}
             />
           </div>
-          <div className='flex justify-between gap-y-2 mt-2 md:mt-5'>
+          <div className='flex flex-col md:flex-row justify-between gap-y-2 mt-2 md:mt-5'>
             <div className='flex gap-x-2'>
               <input
                 className=''
@@ -65,10 +65,10 @@ const Login = () => {
                 type='checkbox'
                 onChange={handleChange}
               />
-              <p className='font-light'>Remember Me</p>
+              <p className='font-light text-xs md:text-base'>Remember Me</p>
             </div>
             <div>
-              <p className='text-greenPalette'>Forgot Password?</p>
+              <p className='text-greenPalette text-xs md:text-base'>Forgot Password?</p>
             </div>
           </div>
           <div>
