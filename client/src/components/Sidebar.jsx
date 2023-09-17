@@ -17,8 +17,8 @@ const Sidebar = () => {
   const [open, setOpen] = useState(true);
 
   const { user, loading, error, dispatch } = useAuthContext();
-
-  const clientInitials = user.first_name[0] + user.last_name[0];
+  const clientInitials =
+    user.first_name[0].toUpperCase() + user.last_name[0].toUpperCase();
   const clientEmail = user.email;
 
   const clientMenu = [
@@ -51,12 +51,18 @@ const Sidebar = () => {
     },
   ];
   return (
-    <div className='p-4 bg-white max-w-xs'>
+    <div className='py-4 px-2 bg-white max-w-xs'>
       <div className=''>
         <div className='flex flex-col gap-y-2'>
           <div>
             <div className='flex justify-between'>
-              <p className={`${!open && 'hidden'} text-md`}>OneHealthSpace</p>
+              <p
+                className={` ${!open && 'hidden'} ${
+                  open && 'hidden md:flex'
+                } text-md`}
+              >
+                OneHealthSpace
+              </p>
               <div className='flex gap-x-2'>
                 <p className='rounded-full h-8 w-8 bg-gray-300 flex items-center justify-center'>
                   {clientInitials}
@@ -69,20 +75,32 @@ const Sidebar = () => {
                 />
               </div>
             </div>
-            <p className={`text-xs mt-2 ${!open && 'hidden'}`}>Client</p>
-            <p className={`text-xs ${!open && 'hidden'}`}>{clientEmail}</p>
+            <p
+              className={`text-xs mt-2 ${!open && 'hidden'} ${
+                open && 'hidden md:flex'
+              } `}
+            >
+              Client
+            </p>
+            <p
+              className={`text-xs ${!open && 'hidden'} ${
+                open && 'hidden md:flex'
+              }`}
+            >
+              {clientEmail}
+            </p>
           </div>
           {/* <div className='mt-6'>
             <img src='./src/assets/line_4.png' />
           </div> */}
           <div
             className={` ${
-              open ? 'w-72' : 'w-20 '
+              open ? 'w-10 md:w-72' : 'w-10 '
             } bg-dark-purple h-screen  pt-8 relative duration-300`}
           >
             <img
               src='./src/assets/control.png'
-              className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
+              className={`hidden md:flex absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
             border-2 rounded-full  ${!open && 'rotate-180'}`}
               onClick={() => setOpen(!open)}
             />
@@ -90,7 +108,7 @@ const Sidebar = () => {
               <h1
                 className={`text-gray-400 origin-left font-medium text-sm duration-200 ${
                   !open && 'scale-0'
-                }`}
+                } ${open && 'hidden md:flex'}`}
               >
                 CLIENT
               </h1>
@@ -109,8 +127,8 @@ const Sidebar = () => {
                   >
                     <img src={menu.src} />
                     <span
-                      className={`${
-                        !open && 'hidden'
+                      className={`${!open && 'hidden'} ${
+                        open && 'hidden md:flex'
                       } origin-left duration-200`}
                     >
                       {menu.title}
@@ -124,7 +142,7 @@ const Sidebar = () => {
               <h1
                 className={`text-gray-400 origin-left font-medium text-sm duration-200 ${
                   !open && 'scale-0'
-                }`}
+                } ${open && 'hidden md:flex'}`}
               >
                 MANAGE ACCOUNT
               </h1>
@@ -143,8 +161,8 @@ const Sidebar = () => {
                   >
                     <img src={menu.src} />
                     <span
-                      className={`${
-                        !open && 'hidden'
+                      className={`${!open && 'hidden'} ${
+                        open && 'hidden md:flex'
                       } origin-left duration-200`}
                     >
                       {menu.title}
