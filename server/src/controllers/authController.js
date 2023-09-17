@@ -14,8 +14,8 @@ export const register = async (req, res, next) => {
 
   const username = req.body.username;
   const email = req.body.email;
-  const first_name = req.body.first_name;
-  const last_name = req.body.last_name;
+  const first_name = req.body.firstname;
+  const last_name = req.body.lastname;
 
   try {
     // Search if User exist first
@@ -26,7 +26,7 @@ export const register = async (req, res, next) => {
     });
 
     // add user
-    const insertSTMT = `INSERT INTO users (username, email, password, first_name,last_name) VALUES ('${username}','${email}', '${hash}',  '${first_name}', '${last_name}') RETURNING * ;`;
+    const insertSTMT = `INSERT INTO users (username, email, password, first_name,last_name) VALUES ('${username}','${email}', '${hash}', '${first_name}', '${last_name}') RETURNING * ;`;
     pool
       .query(insertSTMT)
       .then(async (response) => {
