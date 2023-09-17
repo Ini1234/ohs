@@ -12,6 +12,7 @@ module.exports = {
         alittleDim: 'rgba(243, 242, 239, 0.28)',
         dimBlue: 'rgba(9, 151, 124, 0.1)',
         secondaryTextColor: '#616161',
+        popupgreen: 'rgba(219, 255, 0, 0.05)',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
@@ -54,6 +55,17 @@ module.exports = {
     lineHeight: {
       'extra-loose': '134%',
       12: '3rem',
+    },
+    fontSize: {
+      xxs: '0.5rem',
+      xs: '0.75rem',
+      sm: '0.8rem',
+      base: '1rem',
+      xl: '1.25rem',
+      '2xl': '1.563rem',
+      '3xl': '1.953rem',
+      '4xl': '2.441rem',
+      '5xl': '3.052rem',
     },
   },
   plugins: [],
