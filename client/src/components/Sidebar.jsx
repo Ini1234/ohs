@@ -18,10 +18,8 @@ const Sidebar = () => {
 
   const { user, loading, error, dispatch } = useAuthContext();
 
-  console.log('user: ', user);
-
-  const clientInitials = 'IE';
-  const clientEmail = 'iniabasi.e@yahoo.com';
+  const clientInitials = user.first_name[0] + user.last_name[0];
+  const clientEmail = user.email;
 
   const clientMenu = [
     { title: 'Home', linkTo: '/myspace', src: shopping_bag },

@@ -11,8 +11,8 @@ import { questioncircleoutlined } from '../assets';
 import { useAuthContext } from '../hooks/useAuthContext';
 
 const MySpace = () => {
-  const user = useAuthContext();
-  const name = user.user.first_name + ' ' + user.user.last_name;
+  const { user, loading, error, dispatch } = useAuthContext();
+  const name = user.first_name + ' ' + user.last_name;
   return (
     <div className='flex-col justify-center w-full g-full bg-gray-100 py-10 px-20'>
       <Link to='/help' className='flex justify-end gap-x-2 '>
