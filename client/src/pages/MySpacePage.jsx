@@ -1,7 +1,8 @@
 import React from 'react';
+import MySpace from '../components/MySpace';
 
 const MySpacePage = () => {
-  return <div>MySpacePage</div>;
+  return <MySpace />;
 };
 
 export default MySpacePage;

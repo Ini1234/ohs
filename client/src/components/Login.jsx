@@ -3,16 +3,21 @@ import { googleIcon, or } from '../assets';
 import axios from 'axios';
 import { AuthContext } from '../context/authContext.jsx';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
     email: undefined,
     password: undefined,
   });
-  const { user, loading, error, dispatch } = useContext(AuthContext);
+  const { user, loading, error, dispatch } = useAuthContext();
 
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+  const [loginError, setLoginError] = useState({
+    errStatus: undefined,
+    errMessage: undefined,
+  });
 
   const handleChange = (event) => {
     setCredentials((prev) => ({
@@ -29,6 +34,12 @@ const Login = () => {
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
       navigate('/myspace');
     } catch (err) {
+      setLoginError({
+        errStatus: err.response.status,
+        errMessage: err.response.data
+          ? err.response.data
+          : 'Unable to connect to the server. Please try again later.',
+      });
       dispatch({ type: 'LOGIN_FAILURE', payload: err.response.data });
     }
   };
@@ -78,7 +89,16 @@ const Login = () => {
             >
               Sign in
             </button>
-            {error && <span>{error.message}</span>}
+            {/* {error && <span>{error.message}</span>} */}
+            <p
+              className={`${
+                loginError.errStatus && loginError.errMessage
+                  ? 'text-black'
+                  : 'hidden'
+              }`}
+            >
+              {loginError.errMessage}
+            </p>
           </div>
           <div className='md:flex w-full mt-3 md:mt-6'>
             <img src={or} alt='ohs' />

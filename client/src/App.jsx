@@ -6,6 +6,7 @@ import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
 import RootLayout from './pages/RootLayout';
 import ErrorPage from './pages/ErrorPage';
+import MySpaceRoot from './pages/MySpaceRoot';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,16 @@ const router = createBrowserRouter([
     ],
   },
 
-  { path: '/myspace', element: <MySpacePage /> },
+  {
+    path: '/myspace',
+    element: <MySpaceRoot />,
+    errorElement: <ErrorPage />,
+    children: [{ path: '', element: <MySpacePage /> }],
+  },
+  {
+    path: '/ini',
+    element: <HomePage />,
+  },
 ]);
 
 const App = () => {
