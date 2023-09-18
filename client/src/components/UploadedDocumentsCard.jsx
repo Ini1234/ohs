@@ -14,7 +14,7 @@ const UploadedDocumentsCard = (props) => {
       <div className=''>
         <Link
           to='/'
-          className='flex items-center justify-center border rounded text-xs py-1 px-4 bg-greenPalette text-white'
+          className='flex items-center justify-center rounded text-xs py-1 px-4 bg-greenPalette text-white font-light'
         >
           View
         </Link>
