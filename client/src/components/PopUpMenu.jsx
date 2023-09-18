@@ -13,7 +13,7 @@ const PopUpMenu = () => {
     },
   ];
   return (
-    <div className={`pt-4 ${open ? '' : 'hidden'}`}>
+    <div className={`hidden sm:flex pt-4 ${open ? '' : 'hidden'}`}>
       <div className='bg-popupgreen border border-black rounded-lg'>
         {slides.map((slide, index) => (
           <div key={index} className='flex justify-between'>

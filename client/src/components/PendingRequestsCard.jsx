@@ -6,9 +6,9 @@ const PendingRequestsCard = (props) => {
   const pendingRequest = props.pendingRequest;
   return (
     <div className='flex py-4 pl-2 justify-between'>
-      <img src={testresultsicon} className='w-8 h-8' />
+      <img src={testresultsicon} className='hidden sm:flex w-8 h-8' />
       <div className='flex flex-col px-2'>
-        <p className='text-md'>{pendingRequest.doc_name}</p>
+        <p className='text-xs sm:text-md'>{pendingRequest.doc_name}</p>
         <p className='text-xs'>Recieved By: {pendingRequest.recieved_by}</p>
       </div>
       <div className=''>

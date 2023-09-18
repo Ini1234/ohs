@@ -26,10 +26,12 @@ const UploadedDocuments = () => {
   return (
     <div className='bg-white p-6 rounded-md'>
       <div className='flex justify-between content-center '>
-        <p className='font-inter font-medium'>Uploaded Documents</p>
+        <p className='text-xs sm:text-base font-inter font-medium'>
+          Uploaded Documents
+        </p>
         <Link
           to='/testsresults'
-          className='underline underline-offset-2 text-xs font-inter font-semibold'
+          className='underline underline-offset-2 text-xxs sm:text-xs font-inter font-semibold'
         >
           View more
         </Link>
