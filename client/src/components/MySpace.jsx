@@ -26,8 +26,8 @@ const MySpace = () => {
       <div className='hidden sm:flex pt-3 pr-12'>
         <SearchBar />
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 pt-8 gap-4 h-1/2'>
-        <div className='grid md:grid-rows-2 gap-5'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 pt-8 gap-4 h-1/2'>
+        <div className='grid sm:grid-rows-2 gap-5'>
           <UploadedDocuments />
           <PendingRequests />
         </div>
