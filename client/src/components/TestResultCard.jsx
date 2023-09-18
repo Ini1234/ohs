@@ -16,7 +16,7 @@ const TestResultCard = (props) => {
           to='/'
           className='flex items-center justify-center border rounded-md text-xs py-1 px-4'
         >
-          View
+          Add
         </Link>
       </div>
     </div>
