@@ -7,6 +7,5 @@ export const useAuthContext = () => {
   if (!context) {
     throw Error('Auth Context must be used inside  AuthContextProvider');
   }
-
   return context;
 };
