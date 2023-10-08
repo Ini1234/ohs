@@ -12,6 +12,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 
 const MySpace = () => {
   const { user, loading, error, dispatch } = useAuthContext();
+
   const name = user.first_name + ' ' + user.last_name;
   return (
     <div className='flex-col justify-center w-full h-full bg-gray-100 py-10 px-5 md:px-20'>
